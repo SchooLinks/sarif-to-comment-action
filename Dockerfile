@@ -1,11 +1,11 @@
 # syntax=docker/dockerfile:1
 
 # latest node-bullseye image 9 February 2024
-FROM node:22-bullseye-slim@sha256:c913ded7281627117bd2e2afbe955036c9ff780eff28f4058e535cd6a5151e26
+FROM docker.io/node:26-bullseye-slim
 WORKDIR /app
 
 # Install node dependencies and update vulnerable packages
-RUN npm install --ignore-scripts  --global npm@11.1.0 && \
+RUN npm install --ignore-scripts  --global npm@12.0.2 && \
     npm install --ignore-scripts  --global npx --force && \
     npm cache clean --force && \
     npm install --ignore-scripts  --global @security-alert/sarif-to-comment@1.11.1 --omit=dev --no-audit --no-fund
