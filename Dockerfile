@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # latest node-bullseye image 9 February 2024
-FROM docker.io/node:26-bullseye-slim
+FROM docker.io/node:26-trixie-slim
 WORKDIR /app
 
 # Install node dependencies and update vulnerable packages
@@ -15,14 +15,14 @@ RUN rm -rf /root/.npm /root/.cache
 
 # Install jq and dependency security patches
 RUN apt-get update && apt-get install --no-install-recommends -y \
-        e2fsprogs=1.46.2-2+deb11u1 \
-        jq=1.6-2.1+deb11u3 \
-        libcom-err2=1.46.2-2+deb11u1 \
-        libss2=1.46.2-2+deb11u1 \
-        libsystemd0=247.3-7+deb11u6 \
-        libudev1=247.3-7+deb11u6 \
-        logsave=1.46.2-2+deb11u1 \
-        perl-base=5.32.1-4+deb11u4 \
+        e2fsprogs=1.47.2-3+b12 \
+        jq=1.7.1-6+deb13u3 \
+        libcom-err2=1.47.2-3+b12 \
+        libss2=1.47.2-3+b12 \
+        libsystemd0=257.13-1~deb13u1 \
+        libudev1=257.13-1~deb13u1 \
+        logsave=1.47.2-3+b12 \
+        perl-base=5.40.1-6 \
         && \
     rm -rf /var/lib/apt/lists/*
 
