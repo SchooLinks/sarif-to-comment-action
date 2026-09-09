@@ -8,7 +8,7 @@ WORKDIR /app
 RUN npm install --ignore-scripts  --global npm@11.1.0 && \
     npm install --ignore-scripts  --global npx --force && \
     npm cache clean --force && \
-    npm install --ignore-scripts  --global @security-alert/sarif-to-comment@1.10.10 --omit=dev --no-audit --no-fund
+    npm install --ignore-scripts  --global @security-alert/sarif-to-comment@1.11.1 --omit=dev --no-audit --no-fund
 
 # Remove unnecessary cache and temp files to reduce attack surface
 RUN rm -rf /root/.npm /root/.cache
