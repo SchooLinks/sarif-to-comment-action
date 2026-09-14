@@ -1,0 +1,54 @@
+---
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    # Check for updates once a week
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: 'deps'
+    labels:
+      - 'kind/dependencies'
+
+  - package-ecosystem: "github-actions"
+    directories:
+      - .github/actions/tests/*/
+      - .github/actions/shared/*/
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: 'deps'
+    labels:
+      - 'kind/dependencies'
+
+  - package-ecosystem: "docker"
+    directory: "/"
+    open-pull-requests-limit: 3
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: 'deps'
+    labels:
+      - 'kind/dependencies'
+    groups:
+      minor-versions:
+        update-types:
+          - "minor"
+          - "patch"
+      major-versions:
+        update-types:
+          - "major"
+
+  - package-ecosystem: 'pre-commit'
+    directory: '/'
+    open-pull-requests-limit: 1
+    target-branch: 'develop'
+    schedule:
+      interval: 'weekly'
+    commit-message:
+      prefix: 'deps'
+    labels:
+      - 'kind/dependencies'
+    pull-request-branch-name:
+      separator: "-"
