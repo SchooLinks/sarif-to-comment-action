@@ -26,10 +26,12 @@ jobs:
           allowed-endpoints: >
             api.github.com:443
             auth.docker.io:443
+            deb.debian.org:80
             github.com:443
             production.cloudflare.docker.com:443
-            registry.npmjs.org:443
+            production.cloudfront.docker.com:443
             registry-1.docker.io:443
+            registry.npmjs.org:443
 
       - name: "Checkout code"
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
@@ -38,7 +40,7 @@ jobs:
 
       - name: Post SARIF findings in the pull request
         if: github.event_name == 'pull_request'
-        uses: sett-and-hive/sarif-to-comment-action@main # This is a test, we want to dogfood main
+        uses: ./
         with:
             token:      ${{ secrets.GITHUB_TOKEN }}
             repository: ${{ github.repository }}
