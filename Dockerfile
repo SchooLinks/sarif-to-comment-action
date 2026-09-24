@@ -22,7 +22,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
         libsystemd0=257.13-1~deb13u1 \
         libudev1=257.13-1~deb13u1 \
         logsave=1.47.2-3+b12 \
-        perl-base=5.40.1-6 \
+        perl-base=5.40.1-6+deb13u1 \
         && \
     rm -rf /var/lib/apt/lists/*
 
